@@ -1,0 +1,12 @@
+c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\bin\Debug\tuixiangzi0.exe.config
+c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\bin\Debug\tuixiangzi0.exe
+c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\bin\Debug\tuixiangzi0.pdb
+c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.Form1.resources
+c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.Properties.Resources.resources
+c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.csproj.GenerateResource.Cache
+c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.csproj.CoreCompileInputs.cache
+c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.exe
+c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.pdb
+C:\Users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.Form2.resources
+C:\Users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.Form3.resources
+C:\Users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.csprojResolveAssemblyReference.cache
