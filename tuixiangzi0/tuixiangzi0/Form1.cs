@@ -13,7 +13,7 @@ namespace tuixiangzi0
 {
     public partial class Form1 : Form
     {
-        private string FileName = string.Empty;
+        public string FileName = ".\\map\\configurations.txt";
         private int Level = 1;
         private string[] txt;
         private string[] txt_n;
@@ -22,9 +22,9 @@ namespace tuixiangzi0
         private int[,] myArray_old1; //recover用的临时数据
         private int i, j;
         private int seq = -1;
-        private int row_num=0, col_num=0;
+        private int row_num=0, col_num=0; //第n关的行数和列数
         internal int flag_last = 0;
-        public int row_start = 0, row_end = 0;
+        public int row_start = 0, row_end = 0; //第n关的开始和结束行数
         public Form1()
         {
             InitializeComponent();
@@ -61,13 +61,13 @@ namespace tuixiangzi0
 
             return array1;
         }
-        public string[] ExtractLines(string[] txt, int n)
+        public string[] ExtractLines(string[] txt, int n)  //提取第n关数据
         {
             string array_s = "//";
 
             //获取开始和结束行
             int num_slash = 0;
-            row_start = 0; row_end = 0;
+            row_start = 0; row_end = 0; row_num=0; flag_last = 0;
 
             for (int row = 0; row < txt.Length;row++)
             {
@@ -84,14 +84,21 @@ namespace tuixiangzi0
                     }
                 }
             }
+            //判断本关是否已删
+            if (num_slash < n)
+            {
+                flag_last = 1;
+                return null;
+            }
+
             //判断是否为最后一关
-            if(row_end==0)
+            if (row_end == 0)
             {
                 row_end = txt.Length;
                 flag_last = 1;
             }
-
             row_num = row_end - row_start;
+
             //为新的array赋值
             txt_n = new string[row_num];
             for (int i = 0; i < row_num; i++)
@@ -150,6 +157,7 @@ namespace tuixiangzi0
                         image = new Bitmap("BoD.png");
                         g.DrawImage(image, j * 30, i * 30, 30, 30);
                     }
+                    //default: 什么都不打印
                 }
             }
             return bit;
@@ -158,8 +166,10 @@ namespace tuixiangzi0
         {
             txtLeveln.Text = Level.ToString();
             txt_n = ExtractLines(txt, Level);
-            myArray = ReadMap(txt_n);
-            pictureBox1.Image = DrawMap(myArray);
+            if (txt_n != null) {
+                myArray = ReadMap(txt_n);
+                pictureBox1.Image = DrawMap(myArray);
+            }
             seq = -1;
             撤销ToolStripMenuItem.Enabled = false;
         }
@@ -224,8 +234,13 @@ namespace tuixiangzi0
 
         public void Form1_Load(object sender, EventArgs e)
         {
-            FileName = ".\\map\\configurations.txt";
-            txt = File.ReadAllLines(FileName);
+            try { txt = File.ReadAllLines(FileName); }
+            catch (FileNotFoundException q)
+            {
+                MessageBox.Show("找不到地图文件", "提示");
+                Close();
+                return;
+            }
             init_data();
             Level_selection();
         }

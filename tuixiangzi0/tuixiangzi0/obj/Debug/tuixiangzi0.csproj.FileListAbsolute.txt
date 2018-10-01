@@ -9,4 +9,3 @@ c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\
 c:\users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.pdb
 C:\Users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.Form2.resources
 C:\Users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.Form3.resources
-C:\Users\yuqi\documents\visual studio 2017\Projects\tuixiangzi0\tuixiangzi0\obj\Debug\tuixiangzi0.csprojResolveAssemblyReference.cache

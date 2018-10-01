@@ -93,6 +93,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AC59D9A847194DB2804728B19EF1DEE2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C9C17CAD22D6487B81AE4A56063BDA88"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -100,7 +106,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_21842DC9148D769FD2BF4D40CB111586"
+        "OwnerKey" = "8:_8B9CCC227C984F698182F46DDC587242"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,7 +118,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8B9CCC227C984F698182F46DDC587242"
+        "OwnerKey" = "8:_21842DC9148D769FD2BF4D40CB111586"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -472,6 +478,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC59D9A847194DB2804728B19EF1DEE2"
+            {
+            "SourcePath" = "8:..\\tuixiangzi0\\bin\\1381Game.ico"
+            "TargetName" = "8:1381Game.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_776CE969F1C149A187F7F568BC408547"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C9C17CAD22D6487B81AE4A56063BDA88"
             {
             "SourcePath" = "8:..\\tuixiangzi0\\bin\\Debug\\wall.png"
@@ -571,7 +597,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:tuixiangzi"
         "ProductCode" = "8:{A6AFD74C-D150-4225-81F7-174353FCA6A3}"
-        "PackageCode" = "8:{D8BE7074-5C36-4740-B7C6-27E8D8D828F6}"
+        "PackageCode" = "8:{0250B68E-B10A-4B94-A2E3-7737DA2CE389}"
         "UpgradeCode" = "8:{DFF13D46-8BC4-44C4-9D3B-37F88B5A962C}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -702,7 +728,7 @@
             "Target" = "8:_8B9CCC227C984F698182F46DDC587242"
             "Folder" = "8:_F6393F7C9AB643FE9BDEEDC037A0BDEE"
             "WorkingFolder" = "8:_8EEA449DD7DB42CDB5014260241E349A"
-            "Icon" = "8:"
+            "Icon" = "8:_AC59D9A847194DB2804728B19EF1DEE2"
             "Feature" = "8:"
             }
         }

@@ -15,7 +15,6 @@ namespace tuixiangzi0
     public partial class Form2 : Form
     {
         public event ClickDelegateHander ClickEvent; //声明保存后更新数据到form1
-        private string FileName = string.Empty;
         private int Level = 1;
         private string[] txt;
         private string[] txt_o; //用于保存对比
@@ -32,8 +31,7 @@ namespace tuixiangzi0
 
         public void Form2_Load(object sender, EventArgs e)
         {
-            FileName = ".\\map\\configurations.txt";
-            txt = File.ReadAllLines(FileName);
+            txt = File.ReadAllLines(f.FileName);
             txt_o = new string[txt.Length];
             Array.Copy(txt,txt_o,txt.Length);
             init_data();
@@ -82,10 +80,17 @@ namespace tuixiangzi0
         {
             txtLeveln.Text = Level.ToString();
             txt_n = f.ExtractLines(txt, Level);
-            myArray = f.ReadMap(txt_n);
+            if (txt_n != null)
+            {
+                myArray = f.ReadMap(txt_n);    
+            }else{
+                myArray = new int[10, 10];
+                Level_Regenerate();
+            }
             pictureBox1.Image = f.DrawMap(myArray);
             Level_selection();
-            if(myArray.GetLength(0)==10 & myArray.GetLength(1) == 10)
+
+            if (myArray.GetLength(0)==10 & myArray.GetLength(1) == 10)
             {
                 默认10x10ToolStripMenuItem.Checked = true;
                 x15ToolStripMenuItem.Checked = false;
@@ -101,15 +106,24 @@ namespace tuixiangzi0
                 x15ToolStripMenuItem.Checked = false;
                 自定义ToolStripMenuItem.Checked = true;
             }
+            
         }
-        private void Level_Regenerate() //更新某关数据
+        private void Level_Regenerate() //更新某关数据 （从array到txt）
         {
             List<string> lines = txt.ToList<string>();
-            for (int i = f.row_start; i < f.row_end; i++)
+            if (f.row_start == 0 && f.row_end == 0) //第一关不存在，默认新建一关
             {
-                lines.RemoveAt(f.row_start); //删除第 row_start~row_end 行
+                f.row_start = 1;
+                lines.Insert(0, "//");
             }
-            string[,] array= new string [myArray.GetLength(0),myArray.GetLength(1)];
+            else
+            {
+                for (int i = f.row_start; i < f.row_end; i++)
+                {
+                    lines.RemoveAt(f.row_start); //删除第 row_start~row_end 行
+                }
+            }
+            string[,] array = new string [myArray.GetLength(0),myArray.GetLength(1)];
             string[] arrayi = new string[myArray.GetLength(1)];
             string[] arrays = new string[myArray.GetLength(0)];
             for (int i = 0; i < myArray.GetLength(0); i++)
@@ -125,6 +139,7 @@ namespace tuixiangzi0
             {
                 lines.Insert(i,arrays[i- f.row_start]); //插入新行
             }
+            f.row_end = f.row_start + myArray.GetLength(0);
             txt = lines.ToArray();
         }
         private void Level_New() //增加新关卡
@@ -179,6 +194,16 @@ namespace tuixiangzi0
             }
         }
 
+        private void x15ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            x15ToolStripMenuItem.Checked = true;
+            默认10x10ToolStripMenuItem.Checked = false;
+            自定义ToolStripMenuItem.Checked = false;
+            myArray = new int[15, 15];
+            Level_Regenerate();
+            pictureBox1.Image = f.DrawMap(myArray);
+        }
+
         private void 清空ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Array.Clear(myArray,0,myArray.Length);
@@ -202,34 +227,14 @@ namespace tuixiangzi0
         private void 删除关卡ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<string> lines = txt.ToList<string>();
-            if (f.flag_last == 0)
+            for (int i = f.row_start - 1; i < f.row_end; i++)
             {
-                for (int i = f.row_start; i <= f.row_end; i++)
-                {
-                    lines.RemoveAt(f.row_start); //删除第 row_start~row_end 行
-                }
+                lines.RemoveAt(f.row_start - 1); //删除第 (row_start-1)~row_end 行
             }
-            else {
-                for (int i = f.row_start-1; i < f.row_end; i++)
-                {
-                    lines.RemoveAt(f.row_start-1); //删除第 (row_start-1)~row_end 行
-                }
-                Level--;
-                f.flag_last = 0;
-            }
-            txt = lines.ToArray();
-            txt_n = f.ExtractLines(txt, Level);
-            init_data();
-        }
+            if (Level > 1) { Level--; }   //如果不是第一关，退到上一关
 
-        private void x15ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            x15ToolStripMenuItem.Checked = true;
-            默认10x10ToolStripMenuItem.Checked = false;
-            自定义ToolStripMenuItem.Checked = false;
-            myArray = new int[15, 15];
-            Level_Regenerate();
-            pictureBox1.Image = f.DrawMap(myArray);
+            txt = lines.ToArray();
+            init_data();
         }
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -239,10 +244,10 @@ namespace tuixiangzi0
             {
                 //执行保存
                 //【1】清空
-                File.WriteAllText(FileName, string.Empty);
+                File.WriteAllText(f.FileName, string.Empty);
 
                 //【2】把全部txt写入
-                File.WriteAllLines(FileName, txt);
+                File.WriteAllLines(f.FileName, txt);
 
                 //【3】写入完成
                 MessageBox.Show("写入完成", "系统消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
